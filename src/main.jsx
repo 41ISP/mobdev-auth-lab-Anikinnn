@@ -27,7 +27,7 @@ createRoot(document.getElementById("root")).render(
                     </AuthGuard>} />
                     <Route path="item/:id" element={<ItemDetail />} />
                         <Route 
-                        path="CreateItem"
+                        path="create-item"
                         element={
                         <AuthGuard>
                             <CreateItem />

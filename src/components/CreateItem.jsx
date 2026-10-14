@@ -1,8 +1,37 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Input from './Input'
+import { useState } from 'react'
+import { api } from '../api/api'
+import { useItemsStore } from '../store/useItemsStore'
 
 const CreateItem = () => {
-    const handleSubmit = () => {}
+const [error, setError] = useState("")
+const navigate = useNavigate()
+const { getItems } = useItemsStore()
+
+    const handleSubmit = async (e) => 
+    {
+        e.preventDefault()
+        setError("")
+        const item = 
+        {
+            title: e.target.title.value,
+            description: e.target.description.value,
+            price: Number(e.target.price.value),
+            imageUrl: e.target.imageUrl.value,
+        }
+        try 
+        {
+            await api.sendItems(item)
+            await getItems()
+            navigate('/')
+        } catch (error) 
+        {
+            setError(error.response?.data?.error || 'Что-то пошло не так')
+            console.error(error)
+        }
+    }
+    
     return (
         <div className="container">
             <div className="page-header">
@@ -20,7 +49,7 @@ const CreateItem = () => {
                             className="form-input"
                             name="title"
                             placeholder="Например: iPhone 14 Pro 256GB"
-                            maxlength="100"
+                            maxLength="100"
                             required
                         />
                         <div className="char-counter">
@@ -36,7 +65,7 @@ const CreateItem = () => {
                             className="form-textarea"
                             name="description"
                             placeholder="Подробно опишите товар, его состояние, характеристики..."
-                            maxlength="1000"
+                            maxLength="1000"
                             required></textarea>
                         <div className="char-counter">
                             <span className="current">0</span> / 1000
