@@ -10,111 +10,111 @@ const ItemDetail = () => {
 
             <Link to={"/"}>← Вернуться к списку товаров</Link>
 
-            <div class="item-detail">
-                <div class="item-header">
+            <div className="item-detail">
+                <div className="item-header">
                     <div>
-                         <img src={ItemShow.imageUrl} class="item-image-large" />
+                         <img src={ItemShow.imageUrl} className="item-image-large" />
                     </div>
 
-                    <div class="item-info">
-                        <span class="item-status">{ItemShow.status}</span>
+                    <div className="item-info">
+                        <span className="item-status">{ItemShow.status}</span>
                             
-                        <h1 class="item-title-large">{ItemShow.title}</h1>
+                        <h1 className="item-title-large">{ItemShow.title}</h1>
                             
-                        <div class="item-seller-info">
-                            <div class="seller-avatar">TS</div>
-                            <div class="seller-details">
-                                <div class="seller-name">{ItemShow.username}</div>
-                                <div class="seller-date">{ItemShow.createdAt}</div>
+                        <div className="item-seller-info">
+                            <div className="seller-avatar">TS</div>
+                            <div className="seller-details">
+                                <div className="seller-name">{ItemShow.username}</div>
+                                <div className="seller-date">{ItemShow.createdAt}</div>
                             </div>
                         </div>
 
-                        <div class="item-description-full">
+                        <div className="item-description-full">
                             {ItemShow.description}
                         </div>
 
-                        <div class="price-section">
-                            <div class="starting-price">Начальная цена:</div>
-                            <div class="current-price">{ItemShow.price}</div>
-                            <div class="highest-bid">Текущая ставка: {ItemShow.highestBid}</div>
+                        <div className="price-section">
+                            <div className="starting-price">Начальная цена:</div>
+                            <div className="current-price">{ItemShow.price}</div>
+                            <div className="highest-bid">Текущая ставка: {ItemShow.highestBid}</div>
 
-                            <form class="bid-form" onSubmit={handleBid}>
+                            <form className="bid-form" onSubmit={handleBid}>
                                 <Input 
                                     type="number" 
                                     name= "bidInput"
-                                    class="bid-input" 
+                                    className="bid-input" 
                                     placeholder="Введите вашу ставку (мин. 70 001 ₽)"
                                     min={ItemShow.highestBid}
                                     step="100"
                                 />
-                                <Button type="submit" class="btn-bid">Сделать ставку</Button>
+                                <Button type="submit" className="btn-bid">Сделать ставку</Button>
                             </form>
                         </div>
 
                     </div>
                 </div>
 
-                {/* <div class="bids-section">
-                    <div class="bids-header">
-                        <h2 class="bids-title">История ставок</h2>
-                        <span class="bids-count">5</span>
+                {/* <div className="bids-section">
+                    <div className="bids-header">
+                        <h2 className="bids-title">История ставок</h2>
+                        <span className="bids-count">5</span>
                 </div>
 
-                    <div class="bids-list">
-                        <div class="bid-item highest-bid-item">
-                            <div class="bid-user">
-                                <div class="bid-avatar">BB</div>
-                                <div class="bid-details">
-                                    <span class="bid-username">buyer_best</span>
-                                    <span class="bid-time">2 часа назад</span>
+                    <div className="bids-list">
+                        <div className="bid-item highest-bid-item">
+                            <div className="bid-user">
+                                <div className="bid-avatar">BB</div>
+                                <div className="bid-details">
+                                    <span className="bid-username">buyer_best</span>
+                                    <span className="bid-time">2 часа назад</span>
                                 </div>
-                                <span class="highest-badge">🏆 Лидирует</span>
+                                <span className="highest-badge">🏆 Лидирует</span>
                             </div>
-                            <div class="bid-amount">70 000 ₽</div>
+                            <div className="bid-amount">70 000 ₽</div>
                         </div>
 
-                        <div class="bid-item">
-                            <div class="bid-user">
-                                <div class="bid-avatar">JD</div>
-                                <div class="bid-details">
-                                    <span class="bid-username">john_doe</span>
-                                    <span class="bid-time">5 часов назад</span>
+                        <div className="bid-item">
+                            <div className="bid-user">
+                                <div className="bid-avatar">JD</div>
+                                <div className="bid-details">
+                                    <span className="bid-username">john_doe</span>
+                                    <span className="bid-time">5 часов назад</span>
                                 </div>
                             </div>
-                            <div class="bid-amount">68 000 ₽</div>
+                            <div className="bid-amount">68 000 ₽</div>
                         </div>
 
-                        <div class="bid-item">
-                            <div class="bid-user">
-                                <div class="bid-avatar">AL</div>
-                                <div class="bid-details">
-                                    <span class="bid-username">alice_tech</span>
-                                    <span class="bid-time">1 день назад</span>
+                        <div className="bid-item">
+                            <div className="bid-user">
+                                <div className="bid-avatar">AL</div>
+                                <div className="bid-details">
+                                    <span className="bid-username">alice_tech</span>
+                                    <span className="bid-time">1 день назад</span>
                                 </div>
                             </div>
-                            <div class="bid-amount">67 000 ₽</div>
+                            <div className="bid-amount">67 000 ₽</div>
                         </div>
 
-                        <div class="bid-item">
-                            <div class="bid-user">
-                                <div class="bid-avatar">MK</div>
-                                <div class="bid-details">
-                                    <span class="bid-username">mike_k</span>
-                                    <span class="bid-time">1 день назад</span>
+                        <div className="bid-item">
+                            <div className="bid-user">
+                                <div className="bid-avatar">MK</div>
+                                <div className="bid-details">
+                                    <span className="bid-username">mike_k</span>
+                                    <span className="bid-time">1 день назад</span>
                                 </div>
                             </div>
-                            <div class="bid-amount">66 000 ₽</div>
+                            <div className="bid-amount">66 000 ₽</div>
                         </div>
 
-                        <div class="bid-item">
-                            <div class="bid-user">
-                                <div class="bid-avatar">ST</div>
-                                <div class="bid-details">
-                                    <span class="bid-username">sarah_tech</span>
-                                    <span class="bid-time">2 дня назад</span>
+                        <div className="bid-item">
+                            <div className="bid-user">
+                                <div className="bid-avatar">ST</div>
+                                <div className="bid-details">
+                                    <span className="bid-username">sarah_tech</span>
+                                    <span className="bid-time">2 дня назад</span>
                                 </div>
                             </div>
-                            <div class="bid-amount">65 500 ₽</div>
+                            <div className="bid-amount">65 500 ₽</div>
                         </div> */}
                     {/* </div> */}
                 {/* </div> */}

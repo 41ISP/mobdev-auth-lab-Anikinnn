@@ -2,13 +2,14 @@ import { useState } from "react"
 import Button from "../components/Button"
 import Input from "../components/Input"
 import { Link, useNavigate } from "react-router-dom"
-import { api } from "../api/api"
+import { api } from "../api/api.js"
 import { useUserStore } from "../store/useUserStore"
 
-const Login = () => {
+    const Login = () => {
     const [error, setError] = useState("")
     const navigate = useNavigate()
     const { setSession } = useUserStore()
+
     const handleSubmit = async (e) => 
 
         {
@@ -22,12 +23,12 @@ const Login = () => {
             try 
             {
                 const data = await api.loginUser(user)
-                setSession(data.data)
+                setSession(data)
                 navigate("/")
             }
             catch (error) 
             {
-                setError(error.response.data.error)
+                setError(error.response?.data?.error || 'что-то пошло не так')
                 console.error(error)
             }
 
@@ -59,7 +60,7 @@ const Login = () => {
                             name="username"
                             placeholder="Введите имя пользователя"
                             required
-                            autocomplete="username"
+                            autoComplete="username"
                         />
                         <div className="form-error">Введите имя пользователя</div>
                     </div>
@@ -73,7 +74,7 @@ const Login = () => {
                             name="password"
                             placeholder="Введите пароль"
                             required
-                            autocomplete="current-password"
+                            autoComplete="current-password"
                         />
                         <div className="form-error">Введите пароль</div>
                     </div>

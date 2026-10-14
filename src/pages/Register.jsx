@@ -2,9 +2,9 @@ import { useState } from "react"
 import Button from "../components/Button"
 import Input from "../components/Input"
 import { Link, useNavigate } from "react-router-dom"
-import { api } from "../api/api"
+import { api } from "../api/api.js"
 import { useUserStore } from "../store/useUserStore"
-const Register = () => {
+    const Register = () => {
     const [error, setError] = useState("")
     const navigate = useNavigate()
     const { setSession } = useUserStore()
@@ -25,7 +25,7 @@ const Register = () => {
             try 
             {
                 const data = await api.registerUser(user)
-                setSession(data.data)
+                setSession(session)
                 navigate("/")
             }
             catch (error) 
@@ -60,7 +60,7 @@ const Register = () => {
                             placeholder="Введите имя пользователя"
                             minlength="3"
                             required
-                            autocomplete="username"
+                            autoComplete="username"
                         />
                         <div className="form-hint">Минимум 3 символа</div>
                         <div className="form-error">
@@ -78,7 +78,7 @@ const Register = () => {
                             className="form-input"
                             name="email"
                             placeholder="example@email.com"
-                            autocomplete="email"
+                            autoComplete="email"
                         />
                         <div className="form-error">Введите корректный email</div>
                     </div>
@@ -93,7 +93,7 @@ const Register = () => {
                             placeholder="Введите пароль"
                             minlength="6"
                             required
-                            autocomplete="new-password"
+                            autoComplete="new-password"
                         />
                         <div className="password-strength">
                             <div
@@ -115,7 +115,7 @@ const Register = () => {
                             name="password2"
                             placeholder="Повторите пароль"
                             required
-                            autocomplete="new-password"
+                            autoComplete="new-password"
                         />
                         <div className="form-error">Пароли не совпадают</div>
                     </div>
@@ -139,6 +139,4 @@ const Register = () => {
         </div>
     )
 }
-
-
 export default Register
