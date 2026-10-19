@@ -1,4 +1,6 @@
+import {Link} from 'react-router-dom'
 const ItemCard = ({
+    id,
     status,
     title,
     description,
@@ -9,8 +11,9 @@ const ItemCard = ({
     imageUrl,
 }) => {
     return (
-        <div className="item-card">
-            <img src={imageUrl} className="item-image" />
+        <Link to={`/item/${id}`} className='item-card' style={{ textDecoration: 'none', color: 'inherit' }}
+        >
+            <img src={imageUrl} className="item-image" alt = {title}/>
             <div className="item-content">
                 <span className="status-badge status-active">{status}</span>
                 <h3 className="item-title">{title}</h3>
@@ -19,7 +22,7 @@ const ItemCard = ({
                     <div>
                         <div className="item-price">{price}</div>
                         <div className="bid-info">
-                            {highestBid}
+                            {highestBid ? `Ставка: ${highestBid}` : 'Ставок нету'}
                             <span className="bid-count">{bidCount}</span>
                         </div>
                     </div>
@@ -28,7 +31,7 @@ const ItemCard = ({
                     </div>
                 </div>
             </div>
-        </div>
+        </Link>
     )
 }
 export default ItemCard
